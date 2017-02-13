@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<!-- <button id="cbtn"  onclick="changetext();">Click Me</button>
+	<script>
+    	var x =document.getElementById('cbtn')
+    	function changetext() {
+    		if (x.innerHTML == "Click Me"){
+    			x.innerHTML = "yay you clicked, now click again"
+    		}else {
+    			x.innerHTML = "Click Me"
+    		}
+    	}
+	</script>
+ -->
+
+ <form>
+    Username:
+    <input id="username" type="text" placeholder="Your Name" onkeypress="submitForm()">
+
+    <br> Email:
+    <input  type="e-mail" placeholder="yourname@email.com">
+    <br> Password:
+    <input id="passW" type="password">
+    <br> Repeat password:
+    <input id="passW2" type="password">
+    <br> Phone Number:
+    <input id="phNum" type="number">
+    <br> Country:
+    <input id="cntry" type="text">
+    <br>
+    <button type="button" onclick="submitForm()">Submit</button>
+    <div id="usernameMsg"></div>
+    <div id="passwordMsg"></div>
+    <div id="password2Msg"></div>
+    <div id="countryMsg"></div>
+    <div id="phoneMsg"></div>
+    <div id="goodJob"></div>
+</form>
+
+<script type="text/javascript">
+	
+	function submitForm() {
+		var usernameMessage = "The supplied username is too short, try again using 5 or more characters";
+		var passwordMessage = "That password is too short, try using y or more characters";
+		var password2Message = "the passwords dont match";
+		var countryMessage = "Sorry for now we only do USA and Israel";
+		var phoneMessage = "That phone number is either too short or too long, try again";
+		
+		var usernameElement = document.getElementById('username');
+		var username = usernameElement.value;
+		if (username.length < 5){
+			document.getElementById('usernameMsg').innerHTML= usernameMessage;
+		} else {
+		 	document.getElementById('usernameMsg').innerHTML = '';
+		};
+
+		var passwordElement = document.getElementById('passW');
+		var password = passwordElement.value;
+		if (password.length < 6){
+			document.getElementById('passwordMsg').innerHTML= passwordMessage;
+		} else {
+			document.getElementById('passwordMsg').innerHTML= '';
+		};
+
+		var password2Element = document.getElementById('passW2');
+		var password2 = password2Element.value;
+		if (password2 != password || password2 == 0){
+			document.getElementById('password2Msg').innerHTML= password2Message;
+		} else {
+			document.getElementById('password2Msg').innerHTML= '';
+		};
+
+		var phoneElement = document.getElementById('phNum');
+		var phoneNum = phoneElement.value;
+		if (phoneNum.length > 15 || phoneNum.length < 8){
+			document.getElementById('phoneMsg').innerHTML = phoneMessage;
+		}else {
+			document.getElementById('phoneMsg').innerHTML = '';
+		};
+
+		var countryElement = document.getElementById('cntry');
+		var cou = countryElement.value;
+		if (cou == ("USA" || "Israel")){
+		 	document.getElementById('countryMsg').innerHTML = '';
+		 } else {
+		 	document.getElementById('countryMsg').innerHTML = countryMessage;
+		 }
+
+		if ((document.getElementById('countryMsg').innerHTML == '')&&(document.getElementById('phoneMsg').innerHTML == '') && (document.getElementById('passwordMsg').innerHTML == '') && (document.getElementById('password2Msg').innerHTML == '') && (document.getElementById('usernameMsg').innerHTML == '')) {
+			document.getElementById('goodJob').innerHTML = "all right thats awesome!!!";
+		} else {
+			document.getElementById('goodJob').innerHTML = "";
+		}
+	}
+</script>
+</body>
+</html>
